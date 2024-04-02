@@ -5,9 +5,8 @@
  */
 var maxVowels = function(s, k) {
     // Similar to Max Avg Subarray, initialize window and then slide window over
-    var sum = 0;
+    var sum = 0, max = 0;
     var vowels = "aeiou";
-    var max = sum;
     for (var i = 0; i < s.length; i++) {
         // If next character is vowel, add 1 to sum
         if (vowels.includes(s[i])){
@@ -17,7 +16,6 @@ var maxVowels = function(s, k) {
         if (i >= k && vowels.includes(s[i-k])){
             sum--;
         }
-        
         // compare current substring vowels with max vowel substring
         max = Math.max(max, sum);
     }
