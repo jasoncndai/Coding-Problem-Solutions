@@ -11,18 +11,16 @@ class Solution:
         # check if linked list is empty or single node
         if not head or not head.next:
             return None
-        # slow and fast pointer?
+        # slow and fast pointer, start fast one pass in so we get slow to be before middle node rather than after
         slow = head
-        fast = head
-        prev = None
+        fast = head.next.next
         # Fast pointer moves twice as fast, when fast reaches end of linked list
-        # prev will be at pointer to middle and slow will be pointer from middle
+        # slow will be pointer from middle
         while fast and fast.next:
-            prev = slow
             slow = slow.next
             fast = fast.next.next
         # pointer to middle node changes to pointer from middle node
-        prev.next = slow.next
+        slow.next = slow.next.next
         return head
          
         
