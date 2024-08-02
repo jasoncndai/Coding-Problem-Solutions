@@ -1,17 +1,8 @@
 class Solution:
     def distinctAverages(self, nums: List[int]) -> int:
-        averages = set()
-        while len(nums) > 0:
-            min = 99999
-            max = 0
-            for num in nums:
-                if num < min:
-                    min = num
-                if num > max:
-                    max = num
-            nums.remove(min)
-            nums.remove(max)
-            averages.add((max + min) / 2)
-            
-                
+        averages, n = set(), len(nums)
+        nums.sort()
+        for i in range(n//2):
+            averages.add((nums[n-i-1] + nums[i]) / 2)
+            print(averages)
         return len(averages)
